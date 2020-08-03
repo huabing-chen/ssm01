@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qtu.mapper.MemberMapper">
+  <resultMap id="BaseResultMap" type="com.qtu.entity.Member">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="memNo" jdbcType="VARCHAR" property="memno" />
+    <result column="memName" jdbcType="VARCHAR" property="memname" />
+    <result column="memmoney" jdbcType="DOUBLE" property="memmoney" />
+    <result column="memtime" jdbcType="TIMESTAMP" property="memtime" />
+    <result column="memtel" jdbcType="VARCHAR" property="memtel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, memNo, memName, memmoney, memtime, memtel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="memberListAll" resultMap="BaseResultMap">
+   	select 
+    <include refid="Base_Column_List" />
+    from member
+  </select>
+  
+  <select id="queryBymemNoOrName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select
+   <include refid="Base_Column_List"/>
+    from member
+    where memNo = #{searchKey} or memName=#{searchKey}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from member
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qtu.entity.Member">
+    insert into member (id, memNo, memName, 
+      memmoney, memtime, memtel
+      )
+    values (#{id,jdbcType=INTEGER}, #{memno,jdbcType=VARCHAR}, #{memname,jdbcType=VARCHAR}, 
+      #{memmoney,jdbcType=DOUBLE}, #{memtime,jdbcType=TIMESTAMP}, #{memtel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qtu.entity.Member">
+    insert into member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="memno != null">
+        memNo,
+      </if>
+      <if test="memname != null">
+        memName,
+      </if>
+      <if test="memmoney != null">
+        memmoney,
+      </if>
+      <if test="memtime != null">
+        memtime,
+      </if>
+      <if test="memtel != null">
+        memtel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="memno != null">
+        #{memno,jdbcType=VARCHAR},
+      </if>
+      <if test="memname != null">
+        #{memname,jdbcType=VARCHAR},
+      </if>
+      <if test="memmoney != null">
+        #{memmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="memtime != null">
+        #{memtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memtel != null">
+        #{memtel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qtu.entity.Member">
+    update member
+    <set>
+      <if test="memno != null">
+        memNo = #{memno,jdbcType=VARCHAR},
+      </if>
+      <if test="memname != null">
+        memName = #{memname,jdbcType=VARCHAR},
+      </if>
+      <if test="memmoney != null">
+        memmoney = #{memmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="memtime != null">
+        memtime = #{memtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memtel != null">
+        memtel = #{memtel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qtu.entity.Member">
+    update member
+    set memNo = #{memno,jdbcType=VARCHAR},
+      memName = #{memname,jdbcType=VARCHAR},
+      memmoney = #{memmoney,jdbcType=DOUBLE},
+      memtime = #{memtime,jdbcType=TIMESTAMP},
+      memtel = #{memtel,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

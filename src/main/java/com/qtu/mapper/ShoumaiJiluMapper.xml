@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qtu.mapper.ShoumaiJiluMapper">
+  <resultMap id="BaseResultMap" type="com.qtu.entity.ShoumaiJilu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="GoodsId" jdbcType="VARCHAR" property="goodsid" />
+    <result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+    <result column="Price" jdbcType="VARCHAR" property="price" />
+    <result column="Qty" jdbcType="INTEGER" property="qty" />
+    <result column="Money" jdbcType="VARCHAR" property="money" />
+    <result column="memId" jdbcType="INTEGER" property="memid" />
+    <result column="goumaitime" jdbcType="TIMESTAMP" property="goumaitime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, GoodsId, GoodsName, Price, Qty, Money, memId, goumaitime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shoumaijilu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!-- 查询营业额 -->
+  <select id="selectListByTime" resultMap="BaseResultMap">
+   	select 
+    <include refid="Base_Column_List" />
+    from shoumaijilu
+     where goumaitime BETWEEN #{start} and #{end}
+  </select>
+  <!-- 查询人数 -->
+  <select id="selectListByTimeAndName" resultMap="BaseResultMap">
+   	select 
+    <include refid="Base_Column_List" />
+    from shoumaijilu
+    where goodsId like '澡票%' and goumaitime BETWEEN #{start} and #{end}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shoumaijilu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qtu.entity.ShoumaiJilu">
+    insert into shoumaijilu (id, GoodsId, GoodsName, 
+      Price, Qty, Money, 
+      memId, goumaitime)
+    values (#{id,jdbcType=INTEGER}, #{goodsid,jdbcType=VARCHAR}, #{goodsname,jdbcType=VARCHAR}, 
+      #{price,jdbcType=VARCHAR}, #{qty,jdbcType=INTEGER}, #{money,jdbcType=VARCHAR}, 
+      #{memid,jdbcType=INTEGER}, #{goumaitime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qtu.entity.ShoumaiJilu">
+    insert into shoumaijilu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodsid != null">
+        GoodsId,
+      </if>
+      <if test="goodsname != null">
+        GoodsName,
+      </if>
+      <if test="price != null">
+        Price,
+      </if>
+      <if test="qty != null">
+        Qty,
+      </if>
+      <if test="money != null">
+        Money,
+      </if>
+      <if test="memid != null">
+        memId,
+      </if>
+      <if test="goumaitime != null">
+        goumaitime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null">
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="memid != null">
+        #{memid,jdbcType=INTEGER},
+      </if>
+      <if test="goumaitime != null">
+        #{goumaitime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qtu.entity.ShoumaiJilu">
+    update shoumaijilu
+    <set>
+      <if test="goodsid != null">
+        GoodsId = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null">
+        GoodsName = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        Price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        Qty = #{qty,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        Money = #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="memid != null">
+        memId = #{memid,jdbcType=INTEGER},
+      </if>
+      <if test="goumaitime != null">
+        goumaitime = #{goumaitime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qtu.entity.ShoumaiJilu">
+    update shoumaijilu
+    set GoodsId = #{goodsid,jdbcType=VARCHAR},
+      GoodsName = #{goodsname,jdbcType=VARCHAR},
+      Price = #{price,jdbcType=VARCHAR},
+      Qty = #{qty,jdbcType=INTEGER},
+      Money = #{money,jdbcType=VARCHAR},
+      memId = #{memid,jdbcType=INTEGER},
+      goumaitime = #{goumaitime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<properties resource="jdbc.properties"/>
+	<!-- 驱动的绝对位置 -->
+ 	<classPathEntry   location="D:\Maven\mysql\mysql-connector-java\5.1.39\mysql-connector-java-5.1.39.jar"/>
+  <context id="context1">
+    <!-- 去掉注释 -->
+  <commentGenerator>
+        <property name="suppressDate" value="true"/>
+        <property name="suppressAllComments" value="true" />
+    </commentGenerator>
+  
+    <jdbcConnection connectionURL="${jdbc.url}" driverClass="${jdbc.driver}"
+     password="${jdbc.loginPwd}" userId="${jdbc.loginPwd}" />
+     <!-- 生成实体类 -->
+    <javaModelGenerator targetPackage="com.qtu.entity" targetProject="ssm01\src\main\java" />
+     <!-- mapper.xml -->
+    <sqlMapGenerator targetPackage="com.qtu.mapper" targetProject="ssm01\src\main\java" />
+    <!-- mapper接口 -->
+    <javaClientGenerator targetPackage="com.qtu.mapper" targetProject="ssm01\src\main\java" type="XMLMAPPER" />
+    <table domainObjectName="ShoumaiJilu" tableName="ShoumaiJilu"    enableCountByExample="false" 
+       enableUpdateByExample="false" 
+       enableDeleteByExample="false" 
+      enableSelectByExample="false" selectByExampleQueryId="false">
+        	<!-- 属性的驼峰的设置 -->
+      	<property name="useActualColumnNames" value="false" />
+    </table>
+    
+    
+  </context>
+</generatorConfiguration>

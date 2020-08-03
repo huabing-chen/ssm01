@@ -1,0 +1,36 @@
+ 
+*{
+    margin: 0;
+    padding: 0;
+}
+#guide_panel{
+    width: 98%;
+    margin: 0 auto;
+}
+#row_panel{
+    width: 98%;
+    height: 720px;
+    margin: 0 auto;
+    /*border: solid 1px red;*/
+}
+#row_panel .table-panel{
+    width: 50%;
+    height: 500px;
+    float: left;
+    text-align: center;
+}
+#row_panel .table-panel p{
+    color:#BBBBBB;
+}
+#row_panel .bottom-panel{
+    width: 100%;
+    height: 40px;
+    background: #F0F0F0;
+    float: left;
+    margin-top: 20px;
+    text-align: right;
+}
+#row_panel .bottom-panel span{
+    line-height: 40px;
+    font-size: 18px;
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:component-scan base-package="com.qtu.controller"/>
+		
+	<!-- <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/student/**"/>
+			<bean class="com.qtu.interceptor.MyInterceptor2"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+		
+	<!-- responseBody 返回json的配置 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<!-- 这里顺序不能反，一定先写text/html,不然ie下出现下载提示 -->
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+			
+			
+			<bean id="arrayHttpMessageConverter" class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+			
+			<!-- JSON转化器 -->
+			<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<property name="dateFormat">
+							<bean class="java.text.SimpleDateFormat">
+								<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />
+							</bean>
+						</property>
+						<property name="serializationInclusion">
+							<!-- 注入枚举类型,过滤不输出null -->
+							<value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+						</property>
+					</bean>
+				</property>
+				<property name="supportedMediaTypes">
+					<list>
+						<!-- 这里顺序不能反，一定先写text/html,不然ie下出现下载提示 -->
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp"></property>
+		<!-- 前缀 -->
+		<property name="prefix" value="/src/main/webapp/"></property>
+	</bean>
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 最大文件上传大小 -->
+		<property name="maxUploadSize" value="60000000"></property>
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
+</beans>
+
+
+
+
+
+
+

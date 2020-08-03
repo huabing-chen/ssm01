@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qtu.mapper.RoomMapper">
+  <resultMap id="BaseResultMap" type="com.qtu.entity.Room">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="roomnum" jdbcType="INTEGER" property="roomnum" />
+    <result column="roomstatus" jdbcType="VARCHAR" property="roomstatus" />
+    <result column="roomprice" jdbcType="DOUBLE" property="roomprice" />
+    <result column="roomtype" jdbcType="VARCHAR" property="roomtype" />
+    <result column="roomtime" jdbcType="TIMESTAMP" property="roomtime" />
+    <result column="timelong" jdbcType="DOUBLE" property="timelong" />
+    <result column="numofuse" jdbcType="INTEGER" property="numofuse" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, roomnum, roomstatus, roomprice, roomtype, roomtime, timelong, numofuse
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/>
+  	from room
+  </select>
+  <select id="selectRoomBy" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/>
+  	from room
+  	where roomnum=#{roomnum} or roomtype= #{roomstyle}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from room
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qtu.entity.Room">
+    insert into room (id, roomnum, roomstatus, 
+      roomprice, roomtype, roomtime, 
+      timelong, numofuse)
+    values (#{id,jdbcType=INTEGER}, #{roomnum,jdbcType=INTEGER}, #{roomstatus,jdbcType=VARCHAR}, 
+      #{roomprice,jdbcType=DOUBLE}, #{roomtype,jdbcType=VARCHAR}, #{roomtime,jdbcType=TIMESTAMP}, 
+      #{timelong,jdbcType=DOUBLE}, #{numofuse,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qtu.entity.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roomnum != null">
+        roomnum,
+      </if>
+      <if test="roomstatus != null">
+        roomstatus,
+      </if>
+      <if test="roomprice != null">
+        roomprice,
+      </if>
+      <if test="roomtype != null">
+        roomtype,
+      </if>
+      <if test="roomtime != null">
+        roomtime,
+      </if>
+      <if test="timelong != null">
+        timelong,
+      </if>
+      <if test="numofuse != null">
+        numofuse,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomnum != null">
+        #{roomnum,jdbcType=INTEGER},
+      </if>
+      <if test="roomstatus != null">
+        #{roomstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="roomprice != null">
+        #{roomprice,jdbcType=DOUBLE},
+      </if>
+      <if test="roomtype != null">
+        #{roomtype,jdbcType=VARCHAR},
+      </if>
+      <if test="roomtime != null">
+        #{roomtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timelong != null">
+        #{timelong,jdbcType=DOUBLE},
+      </if>
+      <if test="numofuse != null">
+        #{numofuse,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qtu.entity.Room">
+    update room
+    <set>
+      <if test="roomnum != null">
+        roomnum = #{roomnum,jdbcType=INTEGER},
+      </if>
+      <if test="roomstatus != null">
+        roomstatus = #{roomstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="roomprice != null">
+        roomprice = #{roomprice,jdbcType=DOUBLE},
+      </if>
+      <if test="roomtype != null">
+        roomtype = #{roomtype,jdbcType=VARCHAR},
+      </if>
+      <if test="roomtime != null">
+        roomtime = #{roomtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timelong != null">
+        timelong = #{timelong,jdbcType=DOUBLE},
+      </if>
+      <if test="numofuse != null">
+        numofuse = #{numofuse,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qtu.entity.Room">
+    update room
+    set roomnum = #{roomnum,jdbcType=INTEGER},
+      roomstatus = #{roomstatus,jdbcType=VARCHAR},
+      roomprice = #{roomprice,jdbcType=DOUBLE},
+      roomtype = #{roomtype,jdbcType=VARCHAR},
+      roomtime = #{roomtime,jdbcType=TIMESTAMP},
+      timelong = #{timelong,jdbcType=DOUBLE},
+      numofuse = #{numofuse,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

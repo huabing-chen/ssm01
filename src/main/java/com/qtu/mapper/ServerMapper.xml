@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qtu.mapper.ServerMapper">
+  <resultMap id="BaseResultMap" type="com.qtu.entity.Server">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="serNo" jdbcType="INTEGER" property="serno" />
+    <result column="serName" jdbcType="VARCHAR" property="sername" />
+    <result column="serPrice" jdbcType="DOUBLE" property="serprice" />
+    <result column="serNum" jdbcType="INTEGER" property="sernum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, serNo, serName, serPrice, serNum
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from server
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectListAll" resultMap="BaseResultMap">
+   	select 
+    <include refid="Base_Column_List" />
+    from server
+  </select>
+  
+  <select id="selectServerBySerName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from server
+    where serName like '%' #{searchKey} '%'
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from server
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qtu.entity.Server">
+    insert into server (id, serNo, serName, 
+      serPrice, serNum)
+    values (#{id,jdbcType=INTEGER}, #{serno,jdbcType=INTEGER}, #{sername,jdbcType=VARCHAR}, 
+      #{serprice,jdbcType=DOUBLE}, #{sernum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qtu.entity.Server">
+    insert into server
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="serno != null">
+        serNo,
+      </if>
+      <if test="sername != null">
+        serName,
+      </if>
+      <if test="serprice != null">
+        serPrice,
+      </if>
+      <if test="sernum != null">
+        serNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serno != null">
+        #{serno,jdbcType=INTEGER},
+      </if>
+      <if test="sername != null">
+        #{sername,jdbcType=VARCHAR},
+      </if>
+      <if test="serprice != null">
+        #{serprice,jdbcType=DOUBLE},
+      </if>
+      <if test="sernum != null">
+        #{sernum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qtu.entity.Server">
+    update server
+    <set>
+      <if test="serno != null">
+        serNo = #{serno,jdbcType=INTEGER},
+      </if>
+      <if test="sername != null">
+        serName = #{sername,jdbcType=VARCHAR},
+      </if>
+      <if test="serprice != null">
+        serPrice = #{serprice,jdbcType=DOUBLE},
+      </if>
+      <if test="sernum != null">
+        serNum = #{sernum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qtu.entity.Server">
+    update server
+    set serNo = #{serno,jdbcType=INTEGER},
+      serName = #{sername,jdbcType=VARCHAR},
+      serPrice = #{serprice,jdbcType=DOUBLE},
+      serNum = #{sernum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

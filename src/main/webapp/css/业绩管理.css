@@ -1,0 +1,225 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+#allbox{
+    width: 100%;
+    height: 980px;
+    background: #f2f2f2;
+}
+#allbox h2{
+    font-size: 15px;
+    width: 100%;
+    height: 50px;
+    background: #ffffff;
+    line-height: 50px;
+    text-indent: 1em;
+}
+#box {
+    height: 780px;
+    margin: 10px 10px 0px 10px;
+}
+#search{
+    background: white;
+    height: 55px;
+    margin-bottom: 10px;
+    /* padding-top: 5px; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row nowrap;
+    position: relative;
+}
+#search form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: 0px;
+}
+#search span{
+    color: #606266;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#search em{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#search input{
+    height: 40px;
+    border: 1px solid #dcdfe6;
+    border-radius: 6px; 
+}
+#test1,#test2{
+    text-align: center;
+    background: url("../img/日历\ 日期.png") 25px center no-repeat;
+    background-size:10% 40%;
+}
+#search #ss{
+    width: 100px;
+    outline: none;
+    color: white;
+    background:#429788 url("../img/搜索.png") 20px center no-repeat;
+    background-size: 20% ;
+    text-indent: 1em;
+    position: absolute;
+    right: -170px;
+}
+#search #ss:hover{
+    background:#21d3b2 url("../img/搜索.png") 20px center no-repeat;
+    background-size: 20% ;
+}
+#search .select01{
+    color: #dddfe4;
+}
+
+#xlcd {
+    display:inline-block;
+}
+#yeji{
+    background: white;
+    height: 60px; 
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    line-height: 60px;
+}
+#yeji span{
+    font-size: 20px;
+    color: #606266;
+}
+#a1{
+    font-size: 30px;
+    color: #1756de;
+}
+#a2{
+    font-size: 30px;
+    color: #b539ee;
+}
+#a3{
+    font-size: 30px;
+    color: #ee0acf;
+}
+#main{
+    height: 450px;
+    background: white;
+    margin-bottom: 10px;
+}
+#tab{
+    background: white;
+    height: 457px;
+    padding-left: 10px;
+    padding-top: 10px;
+    position: relative;
+}
+#tab table{
+    width: 99%;
+    /* height: 397px; */
+    border: 1px solid #ebeef5;
+    border-collapse: collapse;
+}
+#tab table tr{
+    height: 37px;
+}
+#tab table th{
+    background: #f5f7fa;
+    color: #606266;
+    height: 37px;
+}
+#tab table td{
+    text-indent: 2em;
+}
+#tab table tr:hover{
+    background: #f5f7fa;
+}
+/* 分页器的设置 */
+/* #page {
+    width: 50%;
+    margin-top:10px ;
+    color: #666;
+    display: block;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+#page li {
+    display: inline-block;
+    min-width: 30px;
+    height: 30px;
+    cursor: pointer;
+    color: #666;
+    font-size: 13px;
+    line-height: 28px;
+    background-color: #f9f9f9;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.xl-nextPage,
+.xl-prevPage {
+    width: 30px;
+    color: #0073A9;
+    border: 2px solid #cccccc;
+}
+
+#page li.xl-disabled {
+    opacity: .5;
+    cursor: no-drop;
+}
+
+#page li.xl-disabled:hover{
+    background-color: #429788 !important;
+    border: 1px solid #dce0e0 !important;
+    color: #666 !important;
+}
+
+#page li.xl-active {
+    background-color: #429788;
+    border-color: #429788;
+    color: #FFF
+}
+
+#page li:hover{
+    background-color: #429788 !important;
+    border-color: #429788;
+    color: #FFF
+}
+
+ #page li.xl-jumpText {
+    background-color: rgba(0,0,0,0);
+    border-color: rgba(0,0,0,0);
+    opacity: 1;
+}
+
+#page li.xl-jumpText:hover{
+    background-color: rgba(0,0,0,0) !important;
+    border-color: rgba(0,0,0,0) !important;
+}
+
+#page li.xl-jumpButton{
+    padding: 0 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background: #cccccc;
+} */
+
+#xlJumpNum {
+    width: 35px;
+    margin: 0 3px;
+}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+}
+input[type="number"]{
+    -moz-appearance:textfield;
+}
+.layui-form-item{
+    margin-bottom: 0px;
+}

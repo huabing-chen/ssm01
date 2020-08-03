@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 
+"-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ <!-- 属性定义 加载一个properties文件 在 properties标签 中配置属性值 -->
+ 	<properties resource="jdbc.properties" />
+ 	
+ 	<settings>
+ 		<setting name="logImpl" value="LOG4J"/>
+ 		
+ 		<setting name="lazyLoadingEnabled" value="true"/>
+ 		<setting name="aggressiveLazyLoading" value="false"/>
+ 		<setting name="cacheEnabled" value="true"/>
+ 	</settings>
+ 
+ <!-- 分页插件 -->
+ <plugins>
+ 	<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+ </plugins>
+ 
+ <mappers>
+ <!-- 批量mapper配置 通过package进行自动扫描包下边的mapper接口， 要求：需要mapper.xml和mapper.java同名并且在一个目录 -->
+ <package name="com.qtu.mapper"/>
+ </mappers>
+ 
+ 
+ 
+ </configuration>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qtu.mapper.BuyWaterMapper">
+  <resultMap id="BaseResultMap" type="com.qtu.entity.BuyWater">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="waterMg" jdbcType="VARCHAR" property="watermg" />
+    <result column="waterPrice" jdbcType="DECIMAL" property="waterprice" />
+    <result column="buyTime" jdbcType="TIMESTAMP" property="buytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, waterMg, waterPrice, buyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from buywater
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectListAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from buywater
+  	order by buytime desc
+  </select>
+  
+  <select id="selectBuyWaterByTime" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List"/>
+  	from buywater
+  	where buyTime between #{startTime} and #{endTime}
+  	order by buytime desc
+  </select>
+  
+  <select id="selectBuyWaterByTime2" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List"/>
+  	from buywater
+  	where buyTime between #{startTime} and #{endTime}
+  	order by buytime desc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from buywater
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qtu.entity.BuyWater">
+    insert into buywater (id, waterMg, waterPrice, 
+      buyTime)
+    values (#{id,jdbcType=INTEGER}, #{watermg,jdbcType=VARCHAR}, #{waterprice,jdbcType=DECIMAL}, 
+      #{buytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qtu.entity.BuyWater">
+    insert into buywater
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="watermg != null">
+        waterMg,
+      </if>
+      <if test="waterprice != null">
+        waterPrice,
+      </if>
+      <if test="buytime != null">
+        buyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="watermg != null">
+        #{watermg,jdbcType=VARCHAR},
+      </if>
+      <if test="waterprice != null">
+        #{waterprice,jdbcType=DECIMAL},
+      </if>
+      <if test="buytime != null">
+        #{buytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qtu.entity.BuyWater">
+    update buywater
+    <set>
+      <if test="watermg != null">
+        waterMg = #{watermg,jdbcType=VARCHAR},
+      </if>
+      <if test="waterprice != null">
+        waterPrice = #{waterprice,jdbcType=DECIMAL},
+      </if>
+      <if test="buytime != null">
+        buyTime = #{buytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qtu.entity.BuyWater">
+    update buywater
+    set waterMg = #{watermg,jdbcType=VARCHAR},
+      waterPrice = #{waterprice,jdbcType=DECIMAL},
+      buyTime = #{buytime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

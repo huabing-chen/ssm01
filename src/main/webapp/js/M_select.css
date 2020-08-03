@@ -1,0 +1,72 @@
+.sel-box{
+	width: 100%;
+	border:1px solid #ddd;
+	overflow: hidden;
+}
+.sel-box.on{
+	border-color: #15A0F5;
+}
+.sel-title-box{
+	position: relative;
+	cursor: default;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color:white;
+}
+
+.sel-title{
+	padding-left: 12px;
+	line-height: 2.2;
+}
+.sel-sign{
+	position: absolute;
+	display: inline-block;
+	right: 0;
+	top: 0;
+	background: url(down2.png);
+	background-size: 100% 100%;
+}
+.sel-sign.on{
+	background: url(down22.png);
+	background-size: 100% 100%;
+}
+.sel-float-box{
+	position: absolute;
+	border:1px solid #ddd;
+	
+	z-index: 2;
+	background-color:white;
+	margin-left: -1px;
+	overflow: hidden;
+	line-height: 1.8;
+}
+.sel-float-box.on{
+	border-color: #15A0F5;
+}
+.sel-float-div{
+	padding-left: 12px;
+	cursor: default;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+	background-color: white;
+	color:#666;
+}
+.sel-float-div:hover{
+	background-color:#15A0F5;
+	color:white;
+}
+.sel-float-div-disabled{
+	padding-left: 12px;
+	line-height: 1.8;
+	color:#bbb;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.sel-hide{
+	display: none;
+
+}
