@@ -15,7 +15,7 @@
 		<servlet-api>3.1.0</servlet-api>
 		<jsp-api>2.3.3</jsp-api>
 		<jstl.version>1.2</jstl.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<mybatis-spring>2.0.3</mybatis-spring>
 		<jackson.version>2.10.0</jackson.version>
 		<pageHelper.version>5.0.0</pageHelper.version>
