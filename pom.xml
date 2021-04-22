@@ -8,7 +8,7 @@
   <!-- ssm springmvc spring mybatis（orm） springmvc.xml applicationContext.xml 
 		web.xml servlet listener -->
 	<properties>
-		<mybatis.version>3.4.6</mybatis.version>
+		<mybatis.version>3.5.6</mybatis.version>
 		<mysql.version>5.1.39</mysql.version>
 		<druid.version>1.1.21</druid.version>
 		<spring.version>4.3.25.RELEASE</spring.version>
