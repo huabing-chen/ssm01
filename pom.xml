@@ -17,7 +17,7 @@
 		<jstl.version>1.2</jstl.version>
 		<junit.version>4.12</junit.version>
 		<mybatis-spring>2.0.3</mybatis-spring>
-		<jackson.version>2.10.0</jackson.version>
+		<jackson.version>2.12.7.1</jackson.version>
 		<pageHelper.version>5.0.0</pageHelper.version>
 		
 	</properties>
